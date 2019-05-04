@@ -11,7 +11,10 @@
 			foreach($lp as $log)
 			{
 				if ($log["login"] == $_POST["login"])
+				{
 					exit ("Sushestvuet\n");
+					$err = TRUE;
+				}
 			}
 		}
 		$lp[] = array (
