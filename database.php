@@ -50,8 +50,10 @@
 					$data[$new_data["name"]] =  $new_data;
 					$data = json_encode($data, JSON_PRETTY_PRINT);
 					file_put_contents($file, $data);
+					return (1);
 				}
 			}
+			dataBaseItemAdd($new_data);
 		}
 		else
 			echo "DataBase doesn't exist\n";
@@ -111,18 +113,31 @@
 
 	function dataBaseCreatePageFromArray($array)
 	{
+		echo "<table>";
+		$i = 0;
+		print_r($arrat);
 		foreach($array as $item)
 		{
+			if (i % 3 != 1)
+			{
+				echo "<td>";
+			}
 			//echo "$item";
 			$name = $item["name"];
 			$img = $item["img"];
-			echo '<div>
+			echo '<td>
 					<p>
 						<h1>'.$name.'</h1>
 					</p>
-					<div>
-						<img  src='."\"$img\"".' width="100px" height="100px"/>
+					<div class="top">
+						<img  src='."\"$img\"".'/>
 					</div>
-				</div>';
+					</td>';
+			if (i % 3 != 1)
+			{
+				echo "</td>";
+			}
+			$i++;
 		}
+		echo "</table>";
 	}
