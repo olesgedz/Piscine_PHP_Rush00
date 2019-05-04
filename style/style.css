@@ -8,14 +8,16 @@
 .cla{
 	width: 24px;
 	position: right;
-	margin-top: 4px;
+	margin: 4px;
 }
 .buttons{
 	display: flex;
 	flex-direction: row;
-	width: 60px;
+	width: 200px;
 	justify-content: space-between;
 	margin: 4px;
+	margin-right: 50px;
+	font-family: Proxima Nova,Tahoma,Serif,Arial;
 }
 .brainfuck{
 	margin-top: 30px;
@@ -77,4 +79,48 @@ footer {
 	justify-content: space-between;
 	display: flex;
 	flex-direction: row;
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-family: Proxima Nova,Tahoma,Serif,Arial;
+}
+.centre_profile{
+	margin: 0 auto;
+	width: 1340px;
+	padding: 0 20px;
+	color: #757575;
+	display: flex;
+	flex-direction: column;
+}
+.ep{
+	display: flex;
+	flex-direction: row;
+}
+.userprofile{
+	color: black;
+	font-family: Proxima Nova,Tahoma,Serif,Arial;
+	padding: 10px 22px;
+
+}
+.buttonchange{
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	width: 250px;
+}
+.usern{
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 2px solid black;
+}
+.table{
+	border-bottom: 2px solid black;
 }

@@ -17,21 +17,11 @@
 				}
 			}
 		}
-		$lp[$_POST["login"]] = array (
+		$lp[] = array (
 			"login" => $_POST["login"],
-			"passwd" => hash('whirlpool', $_POST["passwd"]),
-			"address" => $_POST["address"],
-			"email" => $_POST["email"],
-			"phone" => $_POST["phone"]
-
-		);
+			"passwd" => hash('whirlpool', $_POST["passwd"]));
 		file_put_contents("./private/passwd", serialize($lp));
-		$_SESSION["auth_login"] = $_POST["login"];
-		$_SESSION["auth_address"] = $_POST["address"];
-		$_SESSION["auth_email"] = $_POST["email"];
-		$_SESSION["auth_phone"] = $_POST["phone"];
-		header('Location: ./index.php');
-		exit();
+		header('Location: ./login.php');
 	}
 ?>
 
@@ -61,15 +51,15 @@
 		.button {
 			width: 372px;
 		}
+		::placeholder {
+			color: red;
+		}
 	</style>
 </head>
 <body>
-		<form action="register.php" method='post'>
-			<input name="login" type="text" value="" placeholder="Username" required>
+		<form action="register.php" action="" method='post'>
+			<input name="login" type="text" value="" placeholder="This username already exist" required>
 			<input name="passwd" type="password" value="" placeholder="Password" required>
-			<input name="address" type="text" value="" placeholder="Address" required>
-			<input name="email" type="email" value="" placeholder="E-mail" required>
-			<input name="phone" type="tel" value="" placeholder="Phone number" required>
 			<input class="button" type="submit" name="submit" value="Register"/>
 		</form>
 		<form action="login.php">

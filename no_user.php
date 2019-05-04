@@ -15,9 +15,6 @@
 					if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 					{
 						$_SESSION["auth_login"] = $_POST["login"];
-						$_SESSION["auth_address"] = $_POST["address"];
-						$_SESSION["auth_email"] = $_POST["email"];
-						$_SESSION["auth_phone"] = $_POST["phone"];
 						header('Location: ./index.php');
 						exit();
 					}
@@ -63,12 +60,15 @@
 		.button {
 			width: 372px;
 		}
+		::placeholder {
+			color: red;
+		}
 
 	</style>
 </head>
 <body>
 		<form action="login.php" action="" method='post'>
-			<input name="login" type="text" value="" placeholder="Username" required>
+			<input name="login" type="text" value="" placeholder="No user with this name" required>
 			<input name="passwd" type="password" value="" placeholder="Password" required>
 			<input class="button" type="submit" name="submit" value="Login"/>
 		</form>

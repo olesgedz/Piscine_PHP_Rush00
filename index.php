@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Brainfuck</title>
+	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
@@ -16,7 +17,23 @@
 
 		<div class="buttons">
 			<div class="shoppingcart cla"><img src="https://image.flaticon.com/icons/svg/126/126515.svg"></div>
-			<div class="accountsettings cla"><a href="login.php"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"></a></div>
+			<?php
+				if ($_SESSION["auth_login"])
+				{
+			?>
+					<div class="accountsettings cla"><a href="profile.php" title="Profile"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"></a></div>
+					<div class="cla"><?=$_SESSION["auth_login"]?></div>
+					<div class="cla"><a href="logout.php" title="Logout"><img src="https://image.flaticon.com/icons/svg/126/126467.svg"></a></div>
+			<?php
+				}
+				else
+				{
+			?>
+					<div class="accountsettings cla"><a href="login.php"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"></a></div>
+					<div class="cla"><a href="login.php">Login</a></div>
+			<?php
+				}
+			?>
 		</div>
 	</div>
 	<div class="home">
@@ -25,6 +42,7 @@
 				<tr>
 					<td>
 							<div class="top"><img src="https://asset.msi.com/resize/image/global/product/product_5_20190314100759_5c89b77f26b45.png62405b38c58fe0f07fcef2367d8a9ba1/600.png"></div>
+							<div></div>
 					</td>
 					<td>
 							<div class="top"><img src="https://asset.msi.com/resize/image/global/product/product_8_20170630094242_5955ac92e8237.png62405b38c58fe0f07fcef2367d8a9ba1/600.png"></div>
