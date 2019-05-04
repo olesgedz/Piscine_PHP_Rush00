@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if ($_POST["submit"] === "Change" && $_POST["passwd"])
+	if ($_POST["submit"] === "Change" && ($_POST["phone"] && $_POST["passwd"]))
 	{
 		$lp = unserialize(file_get_contents("./private/passwd"));
 		foreach($lp as $log)
@@ -10,13 +10,11 @@
 			{
 				if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 				{
-					if ($_POST["new_passwd"] === $_POST["re_passwd"])
-					{
-						$log[$_SESSION["login"]] = array ("passwd" => hash('whirlpool', $_POST["new_passwd"]));
-						file_put_contents("./private/passwd", serialize($lp));
-						header('Location: ./profile.php');
-						exit();
-					}
+					$log[$_SESSION["login"]] = array ("phone" => $_POST["phone"]);
+					file_put_contents("./private/passwd", serialize($lp));
+					$_SESSION["auth_phone"] = $_POST["phone"];
+					header('Location: ./profile.php');
+					exit();
 				}
 			}
 		}
@@ -27,7 +25,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck - Change Password</title>
+	<title>Brainfuck - Change phone</title>
 	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<style>
 		form {
@@ -52,10 +50,9 @@
 	</style>
 </head>
 <body>
-		<form action="change_passwd.php" method='post'>
-			<input name="passwd" type="password" value="" placeholder="Old password" required>
-			<input name="new_passwd" type="password" value="" placeholder="New password" required>
-			<input name="re_passwd" type="password" value="" placeholder="One more time" required>
+		<form action="change_number.php" method='post'>
+			<input name="phone" type="tel" value="" placeholder="New phone number" required>
+			<input name="passwd" type="password" value="" placeholder="Password" required>
 			<input class="button" type="submit" name="submit" value="Change"/>
 		</form>
 </body>

@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if ($_POST["submit"] == "Login" && ($_POST["login"] || $_POST["passwd"]))
+	if ($_POST["submit"] == "Login" && ($_POST["login"] && $_POST["passwd"]))
 	{
 		if (!file_exists("./private"))
 			mkdir("./private");

@@ -1,18 +1,23 @@
 <?php
 	session_start();
 
-	if ($_POST["submit"] == "Register" && ($_POST["login"] || $_POST["passwd"]))
+	if ($_POST["submit"] === "Change" && ($_POST["address"] && $_POST["passwd"]))
 	{
 		$lp = unserialize(file_get_contents("./private/passwd"));
-
-		if ($lp['passwd'] === hash('whirlpool', $_POST["passwd"]))
+		foreach($lp as $log)
 		{
-			$lp[$_SESSION["login"]] = array ("email" => $_POST["email"]);
-			file_put_contents("./private/passwd", serialize($lp));
-			$_SESSION["auth_email"] = $_POST["email"];
+			if ($log["login"] == $_SESSION["auth_login"])
+			{
+				if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
+				{
+					$log[$_SESSION["login"]] = array ("address" => $_POST["address"]);
+					file_put_contents("./private/passwd", serialize($lp));
+					$_SESSION["auth_address"] = $_POST["address"];
+					header('Location: ./profile.php');
+					exit();
+				}
+			}
 		}
-		header('Location: ./profile.php');
-		exit();
 	}
 ?>
 
@@ -20,7 +25,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck - Register page</title>
+	<title>Brainfuck - Change address</title>
 	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<style>
 		form {
@@ -45,8 +50,8 @@
 	</style>
 </head>
 <body>
-		<form action="change_email.php" method='post'>
-			<input name="email" type="email" value="" placeholder="E-mail" required>
+		<form action="change_address.php" method='post'>
+			<input name="address" type="text" value="" placeholder="New address" required>
 			<input name="passwd" type="password" value="" placeholder="Password" required>
 			<input class="button" type="submit" name="submit" value="Change"/>
 		</form>

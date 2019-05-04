@@ -1,8 +1,10 @@
 <?php
 	session_start();
 
-	if ($_POST["submit"] == "Login" && ($_POST["login"] || $_POST["passwd"]))
+
+	if ($_POST["submit"] == "Login" && ($_POST["login"] && $_POST["passwd"]))
 	{
+
 		if (!file_exists("./private"))
 			mkdir("./private");
 		if (file_exists("./private/passwd"))
@@ -10,10 +12,17 @@
 			$lp = unserialize(file_get_contents("./private/passwd"));
 			foreach($lp as $log)
 			{
+
 				if ($log["login"] == $_POST["login"])
 				{
+
+						echo $log['passwd'];
+						echo "</br>";
+						echo hash('whirlpool', $_POST["passwd"]);
 					if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 					{
+						// echo ($_POST["login"]);
+						echo $log["login"];
 						$_SESSION["auth_login"] = $_POST["login"];
 						header('Location: ./index.php');
 						exit();
@@ -24,11 +33,7 @@
 						exit();
 					}
 				}
-				else
-				{
-					header('Location: ./no_user.php');
-					exit();
-				}
+
 			}
 		}
 	}
@@ -67,7 +72,7 @@
 	</style>
 </head>
 <body>
-		<form action="login.php" action="" method='post'>
+		<form action="no_user.php" action="" method='post'>
 			<input name="login" type="text" value="" placeholder="No user with this name" required>
 			<input name="passwd" type="password" value="" placeholder="Password" required>
 			<input class="button" type="submit" name="submit" value="Login"/>

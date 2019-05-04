@@ -5,20 +5,18 @@
 	{
 		$lp = unserialize(file_get_contents("./private/passwd"));
 		foreach($lp as $log)
+		{
+			if ($log["login"] == $_SESSION["auth_login"])
 			{
-
-				if ($log["login"] == $_SESSION["auth_login"])
+				if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 				{
-					if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
-					{
-						$log[$_SESSION["login"]] = array ("email" => $_POST["email"]);
-						file_put_contents("./private/passwd", serialize($lp));
-						$_SESSION["auth_email"] = $_POST["email"];
-						header('Location: ./profile.php');
-						exit();
-					}
-
+					$log[$_SESSION["login"]] = array ("email" => $_POST["email"]);
+					file_put_contents("./private/passwd", serialize($lp));
+					$_SESSION["auth_email"] = $_POST["email"];
+					header('Location: ./profile.php');
+					exit();
 				}
+			}
 		}
 	}
 ?>
@@ -27,7 +25,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck - Register page</title>
+	<title>Brainfuck - Change e-mail</title>
 	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<style>
 		form {
