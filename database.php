@@ -108,3 +108,21 @@
 		else
 			echo "DataBase doesn't exist\n";
 	}
+
+	function dataBaseCreatePageFromArray($array)
+	{
+		foreach($array as $item)
+		{
+			//echo "$item";
+			$name = $item["name"];
+			$img = $item["img"];
+			echo '<div>
+					<p>
+						<h1>'.$name.'</h1>
+					</p>
+					<div>
+						<img  src='."\"$img\"".' width="100px" height="100px"/>
+					</div>
+				</div>';
+		}
+	}

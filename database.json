@@ -1,22 +1,12 @@
 {
-    "pC": {
-        "name": "pC",
+    "iphone": {
+        "name": "iphone",
         "categories": [
             "tech",
             "home"
         ],
-        "url": "http",
-        "img": "pdsdasdasdsadasd",
-        "number": "2"
-    },
-    "mobile": {
-        "name": "mobile",
-        "categories": [
-            "tech",
-            "home"
-        ],
-        "url": "http",
-        "img": "pdsdasdasdsadasd",
+        "url": "https:\/\/store.storeimages.cdn-apple.com\/4982\/as-images.apple.com\/is\/image\/AppleInc\/aos\/published\/images\/i\/ph\/iphone\/xr\/iphone-xr-blue-select-201809?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1551226036356",
+        "img": "https:\/\/store.storeimages.cdn-apple.com\/4982\/as-images.apple.com\/is\/image\/AppleInc\/aos\/published\/images\/i\/ph\/iphone\/xr\/iphone-xr-blue-select-201809?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1551226036356",
         "number": "2"
     }
 }
