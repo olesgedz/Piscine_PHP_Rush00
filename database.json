@@ -1,26 +1,22 @@
 {
-    "kk": {
-        "name": "kk",
+    "pC": {
+        "name": "pC",
+        "categories": [
+            "tech",
+            "home"
+        ],
         "url": "http",
-        "img": "pic.jpg",
+        "img": "pdsdasdasdsadasd",
         "number": "2"
     },
-    "sadsds": {
-        "name": "sadsds",
+    "mobile": {
+        "name": "mobile",
+        "categories": [
+            "tech",
+            "home"
+        ],
         "url": "http",
-        "img": "pic.jpg",
-        "number": "2"
-    },
-    "sadsadsds": {
-        "name": "sadsadsds",
-        "url": "http",
-        "img": "pdsdic.jpg",
-        "number": "2"
-    },
-    "chair": {
-        "name": "chair",
-        "url": "http",
-        "img": "pdsdic.jpg",
+        "img": "pdsdasdasdsadasd",
         "number": "2"
     }
 }

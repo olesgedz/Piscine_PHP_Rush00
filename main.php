@@ -2,8 +2,13 @@
 <?php
 
 	include("database.php");
-	$data = ["name"=>"chair","url" => "http", "img" =>"pdsdic.jpg", "number"=>"2"];
+	$data = ["name"=>"mobile", "categories"=>array("tech", "home"),"url" => "http", "img" =>"pdsdasdasdsadasd", "number"=>"2"];
 
 	//print($data["name"]["name"]);
-	addData($data);
-	// printDataBase();
+	dataBaseItemAdd($data);
+	//dataBaseItemEdit($data);
+	//dataBaseItemDelete("lemon");
+	//dataBasePrint();
+	print_r($array = dataBaseGetCategory("tech"));
+	dataBaseCreatePageFromArray($array);
+	
