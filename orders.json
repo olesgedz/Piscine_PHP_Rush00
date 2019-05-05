@@ -1,6 +1,19 @@
 {
     "admin": {
         "name": "admin",
-        "cart": []
+        "cart": {
+            "toy1": {
+                "item_id": "toy1",
+                "item_name": "toy1",
+                "item_price": "234",
+                "item_quantity": "2"
+            },
+            "sdd312321sadsads": {
+                "item_id": "sdd312321sadsads",
+                "item_name": "sdd312321sadsads",
+                "item_price": "99",
+                "item_quantity": "1"
+            }
+        }
     }
 }

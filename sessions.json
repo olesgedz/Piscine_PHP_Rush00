@@ -45,10 +45,16 @@
         "category": "all",
         "shopping_cart": [
             {
-                "item_id": "fff",
-                "item_name": "fff",
-                "item_price": "999",
-                "item_quantity": 13
+                "item_id": "toy1",
+                "item_name": "toy1",
+                "item_price": "234",
+                "item_quantity": "2"
+            },
+            {
+                "item_id": "sdd312321sadsads",
+                "item_name": "sdd312321sadsads",
+                "item_price": "99",
+                "item_quantity": "1"
             }
         ]
     }
