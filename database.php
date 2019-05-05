@@ -53,10 +53,7 @@
 					return (1);
 				}
 			}
-			dataBaseItemAdd($new_data);
 		}
-		else
-			echo "DataBase doesn't exist\n";
 	}
 
 	function dataBaseItemDelete($item)
@@ -78,6 +75,25 @@
 		else
 			echo "DataBase doesn't exist\n";
 	}
+
+	function dataBaseItemEditKey($new_data, $oldname)
+    {
+        $file = "./database.json";
+        if (file_exists($file))
+        {
+            $data = json_decode(file_get_contents($file), TRUE);
+            foreach($data as  $name)
+            {
+                if ($name == $oldname)
+                {
+                    $data[$oldname] =  $new_data;
+                    $data = json_encode($data, JSON_PRETTY_PRINT);
+                    file_put_contents($file, $data);
+                    return (1);
+                }
+            }
+        }
+    }
 
 	function dataBaseGetCategory($type)
 	{

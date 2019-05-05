@@ -211,3 +211,12 @@ a {
 	background-color: #666;
 	color: white;
 }
+.catalog{
+	display: flex;
+	flex-direction: column;
+}
+.st_catalog{
+	font-size: 30px;
+	font-weight: bold;
+	color: blue;
+}
