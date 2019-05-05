@@ -62,8 +62,8 @@
 		{	if (file_exists($file))
 				$data = json_decode(file_get_contents($file), TRUE);
 	
-			$data[$_SESSION["auth_login"]] = $_SESSION["auth_login"];
-			$data[$_SESSION["auth_login"]] =  $_SESSION["shopping_cart"];
+			$data[$_SESSION["auth_login"]]["name"] = $_SESSION["auth_login"];
+			$data[$_SESSION["auth_login"]]["cart"] =  $_SESSION["shopping_cart"];
 			$data = json_encode($data, JSON_PRETTY_PRINT);
 			file_put_contents($file, $data);
 		}
