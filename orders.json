@@ -1,13 +1,6 @@
 {
     "admin": {
         "name": "admin",
-        "cart": [
-            {
-                "item_id": "fff",
-                "item_name": "fff",
-                "item_price": "999",
-                "item_quantity": 13
-            }
-        ]
+        "cart": []
     }
 }
