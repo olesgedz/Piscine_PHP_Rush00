@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include("install.php");
-	print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
 <?php
-
+	session_start();
 	include("database.php");
+	include("lib.php");
 	$data = ["name"=>"iphone", "price"=>"999", "categories"=>array("tech", "home"),
 	"url" => "",
 	 "img" =>"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ \
@@ -11,10 +12,13 @@
 
 	//print($data["name"]["name"]);
 	//dataBaseItemAdd($data);
-	dataBaseItemEdit($data);
-	dataBaseItemEdit($puppy);
+	$l["login"]= "123";
+	$_SESSION = getSession($l);
+	print_r($_SESSION);
+	// dataBaseItemEdit($data);
+	// dataBaseItemEdit($puppy);
 	//dataBaseItemDelete("lemon");
-	dataBasePrint();
-	$array = dataBaseGetCategory("tech");
-	dataBaseCreatePageFromArray($array);
+	// dataBasePrint();
+	// $array = dataBaseGetCategory("tech");
+	// dataBaseCreatePageFromArray($array);
 	//echo "<img src='https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xr/iphone-xr-blue-select-201809?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1551226036356'>";
