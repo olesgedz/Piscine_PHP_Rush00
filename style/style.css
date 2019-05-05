@@ -79,13 +79,14 @@
 	outline: none;
 }
 footer {
-	height: 700px;
+	height: 100px;
 	background-color: #222;
 	color: #fff;
 	font-family: Proxima Nova,Tahoma,Serif,Arial;
 	font-size: 1.5vw;
 	justify-content: space-between;
 	display: flex;
+	position: relative;
 	flex-direction: row;
 }
 a {
