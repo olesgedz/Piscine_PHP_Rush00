@@ -2,7 +2,7 @@
 	session_start();
 	include("database.php");
 	include("lib.php");
-	$data = ["name"=>"6", "price"=>"99", "categories"=>array("tech", "home"),
+	$data = ["name"=>"sdd312321sadsads", "price"=>"99", "categories"=>array("tech", "home"),
 	"url" => "",
 	 "img" =>"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ \
 	 ph/iphone/xr/iphone-xr-blue-select-201809?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1551226036356", "number"=>"2"];
@@ -11,8 +11,8 @@
 	 "img" =>"https://i0.wp.com/s3.amazonaws.com/wmfeimages/wp-content/uploads/2018/09/27182802/4189366235_060e3e8e6f_z.jpg?fit=640%2C480&ssl=1", "number"=>"2"];
 
 	//print($data["name"]["name"]);
-	//dataBaseItemAdd($data);
-	 dataBaseItemEditKey($data, 0);
+	dataBaseItemAdd($data);
+	 //dataBaseItemEditKey($data, 0);
 	// dataBaseItemEdit($puppy);
 	//dataBaseItemDelete("lemon");
 	//dataBasePrint();

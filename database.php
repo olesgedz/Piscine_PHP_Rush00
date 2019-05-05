@@ -2,26 +2,7 @@
 
 	function findId()
 	{
-		$file = "./database.json";
-		if (file_exists($file))
-		{
-			$i = 0;
-			$data = json_encode($data, JSON_PRETTY_PRINT);
-			$flag = 0;
-			while ($flag != 1)
-			{
-				foreach($data as $name)
-				{
-					if ($name["id"] == $i)
-					{
-							$flag = 1;
-							return ($i);
-					}
-				}
-				$i++;
-			}
-		}
-			return 0;
+			return dataBaseItemCount() + 1;
 	}
 
 	function dataBaseItemAdd($new_data)
