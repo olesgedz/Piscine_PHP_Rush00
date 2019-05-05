@@ -14,7 +14,7 @@
 	else if ($_POST["submit"] == "Delete")
 		delItem($_POST["name"]);
 	else if ($_POST["submit"] == "ChangeOrder")
-		changeOrder($_POST["name"]);
+		changeOrder($_POST["name"], $_POST["itemtc"]);
 	else if ($_POST["submit"] == "DeleteOrder")
 		deleteOrder($_POST["name"], $_POST["item_name"]);
 	else if ($_POST["submit"] == "CreateUser")
@@ -139,13 +139,14 @@
 		include ("database.php");
 		dataBaseItemDelete($item);
 	}
-	function changeOrder($item)
+	function changeOrder($name, $item)
 	{
-		$new_data = [
-			"item_id"=>$_POST["item_id"],
+		include ("cart_functions.php");
+		$item = [
 			"item_name"=>$_POST["item_name"],
 			"item_price" => $_POST["item_price"],
 			"item_quantity"=>$_POST["item_quantity"]];
+		orderItemEdit($name, $item);
 	}
 	function deleteOrder($name, $item_name)
 	{
@@ -348,6 +349,7 @@
 									<?php
 										foreach($order["cart"] as $item)
 										{
+											$itemtc = $item;
 									?>
 										<form action="profile.php" method="post" class="orderslist">
 											ID: <input type="text" name="item_id" value="<?=$item["item_id"]?>">
@@ -355,6 +357,7 @@
 											Price: <input type="text" name="item_price" value="<?=$item["item_price"]?>">
 											Quantity: <input type="text" name="item_quantity" value="<?=$item["item_quantity"]?>">
 											<input type="hidden" name="name" value="<?=$name?>"/>
+											<input type="hidden" name="itemtc" value="<?=$item?>"/>
 											<input class="buttonadm" name="submit" type="submit" value="ChangeOrder"/>
 											<input class="buttonadm" name="submit" type="submit" value="DeleteOrder"/>
 										</form>
