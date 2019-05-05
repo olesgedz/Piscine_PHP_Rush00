@@ -16,7 +16,7 @@
 	else if ($_POST["submit"] == "ChangeOrder")
 		changeOrder($_POST["name"]);
 	else if ($_POST["submit"] == "DeleteOrder")
-		deleteOrder($_POST["name"]);
+		deleteOrder($_POST["name"], $_POST["item_name"]);
 	else if ($_POST["submit"] == "CreateUser")
 		createUser($_POST["name"]);
 	else if ($_POST["submit"] == "ChangeUser")
@@ -147,9 +147,10 @@
 			"item_price" => $_POST["item_price"],
 			"item_quantity"=>$_POST["item_quantity"]];
 	}
-	function deleteOrder()
+	function deleteOrder($name, $item_name)
 	{
-
+		include ("cart_functions.php");
+		orderItemDelete($name, $item_name);
 	}
 ?>
 
@@ -339,9 +340,11 @@
 						if ($orders){
 						foreach($orders as $order)
 						{
+							$name = $order["name"];
 					?>
+
 							<div class="orders">
-								<form action="profile.php" method="post">
+								<form action="profile.php" method="post" class="orderslist">
 									Name of user: <div><?=$order["name"]?></div>
 									<?php
 										foreach($order["cart"] as $item)
@@ -351,12 +354,14 @@
 											Name: <input type="text" name="item_name" value="<?=$item["item_name"]?>">
 											Price: <input type="text" name="item_price" value="<?=$item["item_price"]?>">
 											Quantity: <input type="text" name="item_quantity" value="<?=$item["item_quantity"]?>">
-										<?php
-										}
-										?>
+											<input type="hidden" name="name" value="<?=$name?>"/>
 											<input class="buttonadm" name="submit" type="submit" value="ChangeOrder"/>
 											<input class="buttonadm" name="submit" type="submit" value="DeleteOrder"/>
 								</form>
+										<?php
+										}
+										?>
+
 								<hr style="border: 2px solid black;">
 							</div>
 					<?php

@@ -241,3 +241,7 @@ a {
 	font-weight: bold;
 	color: black;
 }
+.orders{
+	display: flex;
+	flex-direction: column;
+}

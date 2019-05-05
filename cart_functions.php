@@ -20,12 +20,12 @@
 		}
 		if ($flag == 0)
 		{
-			$item_array = array(  
-								'item_id'               =>     $_GET["id"],  
-								'item_name'               =>     $_POST["hidden_name"],  
-								'item_price'          =>     $_POST["hidden_price"],  
-								'item_quantity'          =>     $_POST["quantity"]  
-							);  
+			$item_array = array(
+								'item_id'               =>     $_GET["id"],
+								'item_name'               =>     $_POST["hidden_name"],
+								'item_price'          =>     $_POST["hidden_price"],
+								'item_quantity'          =>     $_POST["quantity"]
+							);
 			$_SESSION["shopping_cart"][$count] = $item_array;
 		}
 	}
@@ -33,21 +33,21 @@
 	function cartItemDelete()
 	{
 		session_start();
-		foreach($_SESSION["shopping_cart"] as $keys => $values)  
+		foreach($_SESSION["shopping_cart"] as $keys => $values)
 		{
-			if($values["item_id"] == $_GET["id"])  
+			if($values["item_id"] == $_GET["id"])
 			{
 					unset($_SESSION["shopping_cart"][$keys]);
 			}
 		}
 	}
-	
+
 	function cartItemEdit()
 	{
 		session_start();
-		foreach($_SESSION["shopping_cart"] as $keys => $values)  
+		foreach($_SESSION["shopping_cart"] as $keys => $values)
 		{
-			if($values["item_id"] == $_GET["id"])  
+			if($values["item_id"] == $_GET["id"])
 			{
 					unset($_SESSION["shopping_cart"][$keys]);
 			}
@@ -60,7 +60,7 @@
 		if (!empty($_SESSION["shopping_cart"]))
 		{	if (file_exists($file))
 				$data = json_decode(file_get_contents($file), TRUE);
-	
+
 			$data[$_SESSION["auth_login"]]["name"] = $_SESSION["auth_login"];
 			foreach($_SESSION["shopping_cart"] as $item)
 			{
@@ -91,7 +91,7 @@
 		{
 			$data = json_decode(file_get_contents($file), TRUE);
 			foreach($data as $key=>$user)
-			 {	
+			 {
 				 foreach($user["cart"] as $b=>$item)
 				 {
 					unset($data[$key]["cart"][$b]);
