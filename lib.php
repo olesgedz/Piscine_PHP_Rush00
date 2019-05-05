@@ -46,3 +46,17 @@
 
 		}
 	}
+
+	function sumTotal()
+	{
+		$sum = 0;
+		//print_r($_SESSION);
+		if(!empty($_SESSION))
+		{
+			foreach($_SESSION["shopping_cart"] as $item)
+			{
+				$sum +=  $item["item_price"];
+			}
+		}
+		return($sum);
+	}
