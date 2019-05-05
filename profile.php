@@ -7,6 +7,12 @@
 		makeAdmin($_POST["user"]);
 	else if ($_POST["submit"] == "MakeUser")
 		makeUser($_POST["user"]);
+	else if ($_POST["submit"] == "Change")
+		changeItem($_POST["oldname"]);
+	else if ($_POST["submit"] == "Add")
+		addItem($_POST["name"]);
+	else if ($_POST["submit"] == "Delete")
+		delItem($_POST["name"]);
 
 	function delUser($user)
 	{
@@ -56,6 +62,35 @@
 				exit();
 			}
 		}
+	}
+	function changeItem($item)
+	{
+		include ("database.php");
+		$new_data = [
+			"name"=>$_POST["name"],
+			"price"=>$_POST["price"],
+			"categories"=>array($_POST["categories1"], $_POST["categories2"]),
+			"url" => $_POST["url"],
+			"img" => $_POST["img"],
+			 "number"=>$_POST["number"]];
+		dataBaseItemEditKey($new_data, $item);
+	}
+	function addItem($item)
+	{
+		include ("database.php");
+		$new_data = [
+			"name"=>$_POST["name"],
+			"price"=>$_POST["price"],
+			"categories"=>array($_POST["categories1"], $_POST["categories2"]),
+			"url" => $_POST["url"],
+			"img" => $_POST["img"],
+			 "number"=>$_POST["number"]];
+		dataBaseItemAdd($new_data);
+	}
+	function delItem($item)
+	{
+		include ("database.php");
+		dataBaseItemDelete($item);
 	}
 ?>
 
@@ -167,14 +202,57 @@
 								<input class="buttonadm" name="submit" type="submit" value="MakeAdmin" />
 								<input class="buttonadm" name="submit" type="submit" value="MakeUser" />
 							</form>
-
 							<hr>
 						</div>
-
 					<?php
 						}
 					}
-						?>
+					?>
+					<div class="userprofile st_catalog">Catalog edit</div>
+					<hr style="border: 2px solid black;">
+					<?php
+
+					$file = "./database.json";
+					if (file_exists($file))
+					{
+						$catalog = json_decode(file_get_contents($file), TRUE);
+						if ($catalog){
+						foreach($catalog as $item)
+						{
+							$oldname = $item["id"];
+					?>
+							<div class="catalog">
+								<form action="profile.php" method="post">
+									Name: <input type="text" name="name" value="<?=$item["name"]?>">
+									Price: <input type="text" name="price" value="<?=$item["price"]?>">
+									Categories: <input type="text" name="categories1" value="<?=$item["categories"][0]?>">
+									<input type="text" name="categories2" value="<?=$item["categories"][1]?>">
+									URL: <input type="text" name="url" value="<?=$item["url"]?>">
+									Image: <input type="text" name="img" value="<?=$item["img"]?>">
+									Number: <input type="text" name="number" value="<?=$item["number"]?>">
+									<input type="hidden" name="oldname" value="<?=$oldname?>"/>
+									<input class="buttonadm" name="submit" type="submit" value="Change"/>
+									<input class="buttonadm" name="submit" type="submit" value="Delete"/>
+								</form>
+								<hr style="border: 2px solid black;">
+							</div>
+					<?php
+						}
+					}
+				}
+					?>
+				<div class="catalog">
+					<form action="profile.php" method="post">
+						Name: <input type="text" name="name" value="">
+						Price: <input type="text" name="price" value="">
+						Categories: <input type="text" name="categories1" value="">
+						<input type="text" name="categories2" value="">
+						URL: <input type="text" name="url" value="">
+						Image: <input type="text" name="img" value="">
+						Number: <input type="text" name="number" value="">
+						<input class="buttonadm" name="submit" type="submit" value="Add"/>
+					</form>
+					<hr style="border: 2px solid black;">
 				</div>
 			</div>
 
