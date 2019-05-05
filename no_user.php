@@ -1,21 +1,15 @@
 <?php
 	session_start();
 
-
 	if ($_POST["submit"] == "Login" && ($_POST["login"] && $_POST["passwd"]))
 	{
-
-		if (!file_exists("./private"))
-			mkdir("./private");
 		if (file_exists("./private/passwd"))
 		{
 			$lp = unserialize(file_get_contents("./private/passwd"));
 			foreach($lp as $log)
 			{
-
 				if ($log["login"] == $_POST["login"])
 				{
-
 					if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 					{
 						$_SESSION["auth_login"] = $_POST["login"];
@@ -32,7 +26,6 @@
 						exit();
 					}
 				}
-
 			}
 		}
 	}
