@@ -113,9 +113,7 @@
 
 	function dataBaseCreatePageFromArray($array)
 	{
-		echo "<table>";
 		$i = 0;
-		print_r($arrat);
 		foreach($array as $item)
 		{
 			if (i % 3 != 1)
@@ -139,7 +137,6 @@
 			}
 			$i++;
 		}
-		echo "</table>";
 	}
 	function dataBaseItemCount()
 	{

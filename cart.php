@@ -1,45 +1,22 @@
-<?php   
-	session_start();  
+<?php
+	session_start(); //already started?  yes, but it resumes it
+	header('Cache-Control: no cache');
 	include("database.php");
+	include("cart_functions.php");
+	include("lib.php");
 	if ($_POST["add_to_cart"])
 	{
-		// $_SESSION["shopping_cart"]
-		$flag = 0;
-		$i = 0;
-		$count = count($_SESSION["shopping_cart"]);
-		foreach ($_SESSION["shopping_cart"] as &$item)
-		{
-			if ($item["item_id"] == $_GET["id"])
-			{
-				$item['item_quantity'] += $_POST["quantity"];
-				$flag = 1;
-				unset($item);
-			}
-		}
-		if ($flag == 0)
-		{
-			$item_array = array(  
-								'item_id'               =>     $_GET["id"],  
-								'item_name'               =>     $_POST["hidden_name"],  
-								'item_price'          =>     $_POST["hidden_price"],  
-								'item_quantity'          =>     $_POST["quantity"]  
-							);  
-			$_SESSION["shopping_cart"][$count] = $item_array;
-		}
+		cartItemAdd();
+		saveSession();
 	}
-
 	if($_GET["action"] == "delete")  
 	{
-		foreach($_SESSION["shopping_cart"] as $keys => $values)  
-		{
-			if($values["item_id"] == $_GET["id"])  
-			{
-					unset($_SESSION["shopping_cart"][$keys]);
-			}
-		}
+		cartItemDelete();
+		saveSession();
 	}
- ?>  
- <!DOCTYPE html>  
+
+ ?>
+ <!DOCTYPE html>
  <html>  
 	  <head>  
 		   <title> Shopping Cart </title>  

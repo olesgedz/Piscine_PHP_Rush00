@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include("install.php");
+	print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@
 		</div>
 
 		<div class="buttons">
-			<div class="shoppingcart cla"><img src="https://image.flaticon.com/icons/svg/126/126515.svg"></div>
+			<div class="shoppingcart cla"><a href = "cart.php"> <img src="https://image.flaticon.com/icons/svg/126/126515.svg"></a></div>
 			<?php
 				if ($_SESSION["auth_login"])
 				{
@@ -55,12 +56,12 @@
 			?>
 				<td>
 					<p>
-						<h1>$name</h1>
+						<h1><?php echo "$name" ?></h1>
 					</p>
 					<div class="top">
-						<img  src=$img/>
+						<img  src=<?php echo"\"$img\""?>/>
 					</div>
-				</td>;
+				</td>
 			<?php
 				if (i % 3 != 1)
 				{
