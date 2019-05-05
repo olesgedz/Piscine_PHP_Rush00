@@ -41,9 +41,6 @@
 	</div>
 	<div class="home">
 		<div class="centre">
-<<<<<<< HEAD
-			<table>
-=======
 		<div id="buttonstring">
 			<button class="btn active" onclick="filterSelect('all')"> Show all</button>
 			<button class="btn" onclick="filterSelect('computers')"> Computers</button>
@@ -53,51 +50,26 @@
 		</div>
 
 		<div class="container">
->>>>>>> 484a791f6d7570981cbea0d376a52ed11a8d7f1b
 			<?php
-				include("database.php");
-				$array = dataBaseGetCategory("tech");
-				$i = 0;
-				foreach($array as $item)
+				$file = "./database.json";
+				if (file_exists($file))
 				{
-					if (i % 3 != 1)
+					$data = json_decode(file_get_contents($file), TRUE);
+					foreach($data as $item)
 					{
-						echo "<td>";
-					}
-					$name = $item["name"];
-					$img = $item["img"];
 			?>
-				<td>
-					<p>
-						<h1><?php echo "$name" ?></h1>
-					</p>
-					<div class="top">
-						<img  src=<?php echo"\"$img\""?>/>
-					</div>
-				</td>
+						<div class="itemsFilter <?=$item["categories"]?>">
+							<div class="top hitem"><?=$item["name"]?></div>
+							<div class="top"><img src="<?=$item["img"]?>"></div>
+							<div class="top">Price: <?=$item["price"]?></div>
+							<form action="index.php" action="" method='post'>
+								<input class="buttonadm" type="submit" name="submit" value="Buy"/>
+							</form>
+						</div>
 			<?php
-				if (i % 3 != 1)
-				{
-					echo "</td>";
+					}
 				}
-				$i++;
-			}
 			?>
-<<<<<<< HEAD
-			</table>
-=======
-			<div class="itemsFilter computers">
-				<?php
-					include("main.php");
-				?>
-			</div>
-			<div class="itemsFilter consoles">Orange</div>
-			<div class="itemsFilter cameras">Volvo</div>
-			<div class="itemsFilter cellphones">Red</div>
-			<div class="itemsFilter computers">BMW</div>
-			<div class="itemsFilter consoles">Orange</div>
-			<div class="itemsFilter cameras">Volvo</div>
-			<div class="itemsFilter cellphones">Red</div>
 		</div>
 		<script type="text/javascript">
 		filterSelect("all")
@@ -142,7 +114,6 @@
 			});
 		}
 		</script>
->>>>>>> 484a791f6d7570981cbea0d376a52ed11a8d7f1b
 		</div>
 	</div>
 </body>
