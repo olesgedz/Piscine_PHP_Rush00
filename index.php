@@ -50,6 +50,7 @@
 		</div>
 
 		<div class="buttons">
+			<div><?=countTotal();?> items</div>
 			<div><?=sumTotal();?> $</div>
 			<div class="shoppingcart cla"><a href = "cart.php"> <img src="https://image.flaticon.com/icons/svg/126/126515.svg"></a></div>
 			<?php

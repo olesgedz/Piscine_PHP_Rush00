@@ -13,7 +13,7 @@
 .buttons{
 	display: flex;
 	flex-direction: row;
-	width: 200px;
+	width: 300px;
 	justify-content: space-between;
 	margin: 4px;
 	margin-right: 50px;
