@@ -11,9 +11,12 @@
 	"url" => "",
 	 "img" =>"https://i0.wp.com/s3.amazonaws.com/wmfeimages/wp-content/uploads/2018/09/27182802/4189366235_060e3e8e6f_z.jpg?fit=640%2C480&ssl=1", "number"=>"2"];
 
+
+	 $orderItem = ["item_id"=> "Xbox One S", "item_name"=> "Xbox OnS", "item_price"=> "29",
+		"item_quantity"=>1];
 	//print($data["name"]["name"]);
 	//dataBaseItemAdd($data);
-	orderItemDelete("admin", "toy1");
+	orderItemEdit("admin", $orderItem);
 	 //dataBaseItemEditKey($data, 0);
 	// dataBaseItemEdit($puppy);
 	//dataBaseItemDelete("lemon");

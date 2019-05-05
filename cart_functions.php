@@ -107,4 +107,27 @@
 		}
 	}
 
+	function orderItemEdit($name, $item_name)
+	{
+		$file = "./orders.json";
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
+			foreach($data as $key=>$user)
+			 {
+				 foreach($user["cart"] as $b=>$item)
+				 {
+					 if($item["item_id"] == $item_name["item_id"])
+					 {
+					 	$data[$key]["cart"][$b] = $item_name;
+					 }
+
+				 }
+
+			}
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			file_put_contents($file, $data);
+		}
+	}
+
 ?>

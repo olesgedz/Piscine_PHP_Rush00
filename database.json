@@ -44,17 +44,5 @@
         "url": "",
         "img": "https:\/\/cdn.fotosklad.ru\/upload\/iblock\/f5b\/f5b226f38be3deeb7177ce9b90004e0e_thumb_4d76a05b13f4590.jpg",
         "number": ""
-    },
-    "Hello": {
-        "name": "Hello",
-        "price": "999",
-        "categories": [
-            "",
-            ""
-        ],
-        "url": "",
-        "img": "",
-        "number": "",
-        "id": 5
     }
 }
