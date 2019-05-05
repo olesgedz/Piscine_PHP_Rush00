@@ -22,7 +22,6 @@
 			{
 				if ($name["name"] == $new_data["name"])
 				{
-					echo "already exists";
 					return (0);
 				}
 			}
@@ -41,8 +40,6 @@
 			$data = json_decode(file_get_contents($file), TRUE);
 			print_r($data);
 		}
-		else
-			echo "DataBase doesn't exist\n";
 	}
 
 	function dataBaseItemEdit($new_data)
@@ -105,8 +102,6 @@
 				}
 			}
 		}
-		else
-			echo "DataBase doesn't exist\n";
 	}
 
 	function dataBaseGetCategory($type)
@@ -128,17 +123,9 @@
 						}
 					}
 				}
-				// if ($item["name"] == $item)
-				// {
-				// 	unset($data[$item]);
-				// 	$data = json_encode($data, JSON_PRETTY_PRINT);
-				// 	file_put_contents($file, $data);
-				// }
 			}
 			return $array;
 		}
-		else
-			echo "DataBase doesn't exist\n";
 	}
 
 	function dataBaseCreatePageFromArray($array)
@@ -194,8 +181,4 @@
 			return ($data);
 		}
 		return(NULL);
-	}
-	function ft_echo($str)
-	{
-		echo $str."</br>";
 	}

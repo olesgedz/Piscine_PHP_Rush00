@@ -19,7 +19,6 @@
 						$_SESSION["auth_email"] = $log["email"];
 						$_SESSION["auth_phone"] = $log["phone"];
 						$_SESSION["auth_status"] = $log["status"];
-						//print_r($_SESSION);
 						$_SESSION["category"] = "all";
 						header('Location: ./index.php');
 						exit();
