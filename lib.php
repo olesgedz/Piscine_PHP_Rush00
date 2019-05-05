@@ -50,7 +50,6 @@
 	function sumTotal()
 	{
 		$sum = 0;
-		//print_r($_SESSION);
 		if(!empty($_SESSION))
 		{
 			foreach($_SESSION["shopping_cart"] as $item)
@@ -59,4 +58,17 @@
 			}
 		}
 		return($sum);
+	}
+
+	function countTotal()
+	{
+		$count = 0;
+		if(!empty($_SESSION))
+		{
+			foreach($_SESSION["shopping_cart"] as $item)
+			{
+				$count++;
+			}
+		}
+		return($count);
 	}
