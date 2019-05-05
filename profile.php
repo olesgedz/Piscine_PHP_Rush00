@@ -344,12 +344,12 @@
 					?>
 
 							<div class="orders">
-								<form action="profile.php" method="post" class="orderslist">
 									Name of user: <div><?=$order["name"]?></div>
 									<?php
 										foreach($order["cart"] as $item)
 										{
 									?>
+										<form action="profile.php" method="post" class="orderslist">
 											ID: <input type="text" name="item_id" value="<?=$item["item_id"]?>">
 											Name: <input type="text" name="item_name" value="<?=$item["item_name"]?>">
 											Price: <input type="text" name="item_price" value="<?=$item["item_price"]?>">
@@ -357,7 +357,7 @@
 											<input type="hidden" name="name" value="<?=$name?>"/>
 											<input class="buttonadm" name="submit" type="submit" value="ChangeOrder"/>
 											<input class="buttonadm" name="submit" type="submit" value="DeleteOrder"/>
-								</form>
+										</form>
 										<?php
 										}
 										?>
