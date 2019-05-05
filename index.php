@@ -1,6 +1,14 @@
 <?php
 	session_start();
+	header('Cache-Control: no cache');
 	include("install.php");
+	include("cart_functions.php");
+	include("lib.php");
+	if ($_POST["add_to_cart"])
+	{
+		cartItemAdd();
+		saveSession();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +69,11 @@
 							<div class="top hitem"><?=$item["name"]?></div>
 							<div class="top"><img src="<?=$item["img"]?>"></div>
 							<div class="top">Price: <?=$item["price"]?></div>
-							<form action="index.php" action="" method='post'>
-								<input class="buttonadm" type="submit" name="submit" value="Buy"/>
+							<form method="post" action="index.php?action=add&id=<?php echo $item["name"]; ?>">
+							<input type="hidden" name="quantity" class="form-control" value="1" />
+							<input type="hidden" name="hidden_name" value="<?php echo $item["name"]; ?>" />  
+							<input type="hidden" name="hidden_price" value="<?php echo $item["price"]; ?>" />  
+							<input type="submit" name="add_to_cart"  class=" btn btn-success buttonadm " value="Add to Cart" />  
 							</form>
 						</div>
 			<?php
