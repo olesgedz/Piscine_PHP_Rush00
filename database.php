@@ -141,3 +141,34 @@
 		}
 		echo "</table>";
 	}
+	function dataBaseItemCount()
+	{
+		$file = "./database.json";
+		$array = array();
+		$count =  0;
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
+			foreach($data as $item)
+			{
+				$count++;
+			}
+			return ($count);
+		}
+		else
+			return($count);
+	}
+	function dataBaseReturnArray()
+	{
+		$file = "./database.json";
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
+			return ($data);
+		}
+		return(NULL);
+	}
+	function ft_echo($str)
+	{
+		echo $str."</br>";
+	}
