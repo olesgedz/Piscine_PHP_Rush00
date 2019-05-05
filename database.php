@@ -1,10 +1,36 @@
 <?php
+
+	function findId()
+	{
+		$file = "./database.json";
+		if (file_exists($file))
+		{
+			$i = 0;
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			$flag = 0;
+			while ($flag != 1)
+			{
+				foreach($data as $name)
+				{
+					if ($name["id"] == $i)
+					{
+							$flag = 1;
+							return ($i);
+					}
+				}
+				$i++;
+			}
+		}
+			return 0;
+	}
+
 	function dataBaseItemAdd($new_data)
 	{
 		$file = "./database.json";
 		if (!file_exists($file))
 		{
 			$data[$new_data["name"]] =  $new_data;
+			$data[$new_data["name"]]['id'] = findId($data);
 			$data = json_encode($data, JSON_PRETTY_PRINT);
 			file_put_contents($file, $data);
 		}
@@ -20,6 +46,7 @@
 				}
 			}
 			$data[$new_data["name"]] =  $new_data;
+			$data[$new_data["name"]]['id'] = findId($data);
 			$data = json_encode($data, JSON_PRETTY_PRINT);
 			file_put_contents($file, $data);
 		}
@@ -43,9 +70,9 @@
 		if (file_exists($file))
 		{
 			$data = json_decode(file_get_contents($file), TRUE);
-			foreach($data as $name)
+			foreach($data as $key => $name)
 			{
-				if ($name["name"] == $new_data["name"])
+				if ($key == $new_data["name"])
 				{
 					$data[$new_data["name"]] =  $new_data;
 					$data = json_encode($data, JSON_PRETTY_PRINT);
@@ -54,6 +81,31 @@
 				}
 			}
 		}
+		else
+			dataBaseItemAdd($new_data);
+	}
+
+	function dataBaseItemEditKey($new_data, $id)
+	{
+		$file = "./database.json";
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
+			foreach($data as &$name)
+			{
+				if ($name["id"] == $id)
+				{
+					$name =  $new_data;
+					$data = json_encode($data, JSON_PRETTY_PRINT);
+					unset($name);
+					file_put_contents($file, $data);
+					return (1);
+				}
+			}
+		}
+		else
+			dataBaseItemAdd($new_data);
+
 	}
 
 	function dataBaseItemDelete($item)
