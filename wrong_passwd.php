@@ -118,7 +118,7 @@
 			</div>
 
 			<div class="buttons">
-				<div class="shoppingcart cla"><img src="https://image.flaticon.com/icons/svg/126/126515.svg"></div>
+			<div class="shoppingcart cla"><a href = "cart.php"><img src="https://image.flaticon.com/icons/svg/126/126515.svg"></a></div>
 				<?php
 					if ($_SESSION["auth_login"])
 					{
