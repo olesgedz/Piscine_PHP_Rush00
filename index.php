@@ -9,7 +9,7 @@
 		cartItemAdd();
 		saveSession();
 	}
-	
+
 	if ($_POST["type_all"])
 	{
 		$_SESSION["category"] = "all";
@@ -102,12 +102,12 @@
 						<div>
 							<div class="top hitem align"><?=$item["name"]?></div>
 							<div class="top align"><img src="<?=$item["img"]?>"></div>
-							<div class="top align">Price: <?=$item["price"]?></div>
+							<div class="top align">Price: <?=$item["price"]?>$</div>
 							<form method="post" class="align" action="index.php?action=add&id=<?php echo $item["name"]; ?>">
 							<input type="hidden" name="quantity" class="form-control" value="1" />
-							<input type="hidden" name="hidden_name" value="<?php echo $item["name"]; ?>" />  
-							<input type="hidden" name="hidden_price" value="<?php echo $item["price"]; ?>" />  
-							<input type="submit" name="add_to_cart"  class=" btn btn-success buttonadm " value="Add to Cart" />  
+							<input type="hidden" name="hidden_name" value="<?php echo $item["name"]; ?>" />
+							<input type="hidden" name="hidden_price" value="<?php echo $item["price"]; ?>" />
+							<input type="submit" name="add_to_cart"  class=" btn btn-success buttonadm " value="Add to Cart" />
 							</form>
 						</div>
 			<?php

@@ -13,6 +13,14 @@
 		addItem($_POST["name"]);
 	else if ($_POST["submit"] == "Delete")
 		delItem($_POST["name"]);
+	else if ($_POST["submit"] == "ChangeOrder")
+		changeOrder($_POST["name"]);
+	else if ($_POST["submit"] == "DeleteOrder")
+		deleteOrder($_POST["name"]);
+	else if ($_POST["submit"] == "CreateUser")
+		createUser($_POST["name"]);
+	else if ($_POST["submit"] == "ChangeUser")
+		changeUser($_POST["user"]);
 
 	function delUser($user)
 	{
@@ -28,6 +36,45 @@
 				header('Location: ./profile.php');
 			}
 		}
+	}
+	function changeUser($user)
+	{
+		$lp = unserialize(file_get_contents("./private/passwd"));
+		foreach($lp as &$log)
+		{
+			if ($log["login"] == $user)
+			{
+				$log["passwd"] = hash('whirlpool', $_POST["passwd"]);
+				$log["address"] = $_POST["address"];
+				$log["email"] = $_POST["email"];
+				$log["phone"] = $_POST["phone"];
+				file_put_contents("./private/passwd", serialize($lp));
+				unset($log);
+				header('Location: ./profile.php');
+				exit();
+			}
+		}
+	}
+	function createUser()
+	{
+		if (file_exists("./private/passwd"))
+		{
+			$lp = unserialize(file_get_contents("./private/passwd"));
+			foreach($lp as $log)
+			{
+				if ($log["login"] == $_POST["login"])
+					header('Location: ./profile.php');
+			}
+		}
+		$lp[$_POST["login"]] = array (
+			"login" => $_POST["login"],
+			"passwd" => hash('whirlpool', $_POST["passwd"]),
+			"address" => $_POST["address"],
+			"email" => $_POST["email"],
+			"phone" => $_POST["phone"],
+			"status" => "user",
+		);
+		file_put_contents("./private/passwd", serialize($lp));
 	}
 	function makeAdmin($user)
 	{
@@ -72,8 +119,7 @@
 			"categories"=>array($_POST["categories1"], $_POST["categories2"]),
 			"url" => $_POST["url"],
 			"img" => $_POST["img"],
-			"number"=>$_POST["number"],
-			"id"=>$item];
+			 "number"=>$_POST["number"]];
 		dataBaseItemEditKey($new_data, $item);
 	}
 	function addItem($item)
@@ -86,13 +132,24 @@
 			"url" => $_POST["url"],
 			"img" => $_POST["img"],
 			 "number"=>$_POST["number"]];
-		print_r($new_data);
 		dataBaseItemAdd($new_data);
 	}
 	function delItem($item)
 	{
 		include ("database.php");
 		dataBaseItemDelete($item);
+	}
+	function changeOrder($item)
+	{
+		$new_data = [
+			"item_id"=>$_POST["item_id"],
+			"item_name"=>$_POST["item_name"],
+			"item_price" => $_POST["item_price"],
+			"item_quantity"=>$_POST["item_quantity"]];
+	}
+	function deleteOrder()
+	{
+
 	}
 ?>
 
@@ -197,10 +254,14 @@
 							<div>Phone: <?=$log["phone"]?></div>
 							<div>Address: <?=$log["address"]?></div>
 							<div>Status: <?=$log["status"]?></div>
-
 							<form action="profile.php" method="post">
+								<input name="passwd" type="password" value="" placeholder="Password">
+								<input name="address" type="text" value="<?=$log["address"]?>" placeholder="Address">
+								<input name="email" type="email" value="<?=$log["email"]?>" placeholder="E-mail">
+								<input name="phone" type="tel" value="<?=$log["phone"]?>" placeholder="Phone number">
 								<input type="hidden" name="user" value="<?=$log["login"]?>"/>
 								<input class="buttonadm" name="submit" type="submit" value="DeleteUser" />
+								<input class="buttonadm" name="submit" type="submit" value="ChangeUser" />
 								<input class="buttonadm" name="submit" type="submit" value="MakeAdmin" />
 								<input class="buttonadm" name="submit" type="submit" value="MakeUser" />
 							</form>
@@ -210,6 +271,16 @@
 						}
 					}
 					?>
+					<div class="userprofile st_admin">Create new user</div>
+					<hr>
+					<form action="profile.php" method='post'>
+							<input name="login" type="text" value="" placeholder="Username" required>
+							<input name="passwd" type="password" value="" placeholder="Password" required>
+							<input name="address" type="text" value="" placeholder="Address" required>
+							<input name="email" type="email" value="" placeholder="E-mail" required>
+							<input name="phone" type="tel" value="" placeholder="Phone number" required>
+							<input class="buttonadm" type="submit" name="submit" value="CreateUser"/>
+					</form>
 					<div class="userprofile st_catalog">Catalog edit</div>
 					<hr style="border: 2px solid black;">
 					<?php
@@ -257,7 +328,42 @@
 					<hr style="border: 2px solid black;">
 				</div>
 			</div>
+			<div class="userprofile st_orders">Users orders</div>
+					<hr style="border: 2px solid black;">
+					<?php
 
+					$fileorders = "./orders.json";
+					if (file_exists($fileorders))
+					{
+						$orders = json_decode(file_get_contents($fileorders), TRUE);
+						if ($orders){
+						foreach($orders as $order)
+						{
+					?>
+							<div class="orders">
+								<form action="profile.php" method="post">
+									Name of user: <div><?=$order["name"]?></div>
+									<?php
+										foreach($order["cart"] as $item)
+										{
+									?>
+											ID: <input type="text" name="item_id" value="<?=$item["item_id"]?>">
+											Name: <input type="text" name="item_name" value="<?=$item["item_name"]?>">
+											Price: <input type="text" name="item_price" value="<?=$item["item_price"]?>">
+											Quantity: <input type="text" name="item_quantity" value="<?=$item["item_quantity"]?>">
+										<?php
+										}
+										?>
+											<input class="buttonadm" name="submit" type="submit" value="ChangeOrder"/>
+											<input class="buttonadm" name="submit" type="submit" value="DeleteOrder"/>
+								</form>
+								<hr style="border: 2px solid black;">
+							</div>
+					<?php
+						}
+					}
+				}
+					?>
 				<?php
 			}
 			else
