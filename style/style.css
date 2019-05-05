@@ -245,3 +245,8 @@ a {
 	display: flex;
 	flex-direction: column;
 }
+.centr{
+	display: flex;
+	justify-content: center;
+}
+
