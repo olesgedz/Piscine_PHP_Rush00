@@ -57,15 +57,50 @@
 	function cartItemValidate()
 	{
 		$file = "./orders.json";
-		echo "asdadsad";
 		if (!empty($_SESSION["shopping_cart"]))
 		{	if (file_exists($file))
 				$data = json_decode(file_get_contents($file), TRUE);
 	
+			$data[$_SESSION["auth_login"]]["name"] = $_SESSION["auth_login"];
+			foreach($_SESSION["shopping_cart"] as $item)
+			{
+				$data[$_SESSION["auth_login"]]["cart"][$item["item_id"]] = $item;
+			}
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			file_put_contents($file, $data);
+		}
+	}
+
+	function orderItemChange($name)
+	{
+		$file = "./orders.json";
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
 			$data[$_SESSION["auth_login"]]["name"] = $_SESSION["auth_login"];
 			$data[$_SESSION["auth_login"]]["cart"] =  $_SESSION["shopping_cart"];
 			$data = json_encode($data, JSON_PRETTY_PRINT);
 			file_put_contents($file, $data);
 		}
 	}
+
+	function orderItemDelete($name, $item_name) //of person who ordered
+	{
+		$file = "./orders.json";
+		if (file_exists($file))
+		{
+			$data = json_decode(file_get_contents($file), TRUE);
+			foreach($data as $key=>$user)
+			 {	
+				 foreach($user["cart"] as $b=>$item)
+				 {
+					unset($data[$key]["cart"][$b]);
+				 }
+
+			}
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			file_put_contents($file, $data);
+		}
+	}
+
 ?>

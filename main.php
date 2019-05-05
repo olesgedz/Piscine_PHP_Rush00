@@ -2,6 +2,7 @@
 	session_start();
 	include("database.php");
 	include("lib.php");
+	include("cart_functions.php");
 	$data = ["name"=>"sdd312321sadsads", "price"=>"99", "categories"=>array("tech", "home"),
 	"url" => "",
 	 "img" =>"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ \
@@ -11,7 +12,8 @@
 	 "img" =>"https://i0.wp.com/s3.amazonaws.com/wmfeimages/wp-content/uploads/2018/09/27182802/4189366235_060e3e8e6f_z.jpg?fit=640%2C480&ssl=1", "number"=>"2"];
 
 	//print($data["name"]["name"]);
-	dataBaseItemAdd($data);
+	//dataBaseItemAdd($data);
+	orderItemDelete("admin", "toy1");
 	 //dataBaseItemEditKey($data, 0);
 	// dataBaseItemEdit($puppy);
 	//dataBaseItemDelete("lemon");
