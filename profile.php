@@ -27,8 +27,6 @@
 		$lp = unserialize(file_get_contents("./private/passwd"));
 		foreach($lp as &$log)
 		{
-			// print_r($lp);
-
 			if ($log["login"] == $user)
 			{
 				unset($lp[$user]);
@@ -81,8 +79,6 @@
 		$lp = unserialize(file_get_contents("./private/passwd"));
 		foreach($lp as &$log)
 		{
-			// print_r($lp);
-
 			if ($log["login"] == $user)
 			{
 				$log["status"] = "admin";
@@ -357,7 +353,7 @@
 											Price: <input type="text" name="item_price" value="<?=$item["item_price"]?>">
 											Quantity: <input type="text" name="item_quantity" value="<?=$item["item_quantity"]?>">
 											<input type="hidden" name="name" value="<?=$name?>"/>
-											<input type="hidden" name="itemtc" value="<?=$item?>"/>
+											<input type="hidden" name="itemtc" value="<?=$itemtc?>"/>
 											<input class="buttonadm" name="submit" type="submit" value="ChangeOrder"/>
 											<input class="buttonadm" name="submit" type="submit" value="DeleteOrder"/>
 										</form>
