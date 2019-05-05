@@ -6,8 +6,10 @@
 		if (file_exists($file))
 		{
 			$i = 0;
-			$data = json_encode($data, JSON_PRETTY_PRINT);
+			$data = json_decode($data, TRUE);
 			$flag = 0;
+			if (!empty($data))
+			{
 			while ($flag != 1)
 			{
 				foreach($data as $name)
@@ -20,6 +22,7 @@
 				}
 				$i++;
 			}
+		}
 		}
 			return 0;
 	}
@@ -127,25 +130,6 @@
 		else
 			echo "DataBase doesn't exist\n";
 	}
-
-	function dataBaseItemEditKey($new_data, $oldname)
-    {
-        $file = "./database.json";
-        if (file_exists($file))
-        {
-            $data = json_decode(file_get_contents($file), TRUE);
-            foreach($data as  $name)
-            {
-                if ($name == $oldname)
-                {
-                    $data[$oldname] =  $new_data;
-                    $data = json_encode($data, JSON_PRETTY_PRINT);
-                    file_put_contents($file, $data);
-                    return (1);
-                }
-            }
-        }
-    }
 
 	function dataBaseGetCategory($type)
 	{

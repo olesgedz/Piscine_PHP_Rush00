@@ -219,7 +219,7 @@
 						if ($catalog){
 						foreach($catalog as $item)
 						{
-							$oldname = $item["name"];
+							$oldname = $item["id"];
 					?>
 							<div class="catalog">
 								<form action="profile.php" method="post">
