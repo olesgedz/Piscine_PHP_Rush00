@@ -15,6 +15,12 @@
 		saveSession();
 	}
 
+	if($_GET["action"] == "validate")  
+	{
+		cartItemValidate();
+		saveSession();
+	}
+
  ?>
  <!DOCTYPE html>
  <html>  
@@ -90,7 +96,9 @@
 							}
 						?>
 					 </table>
-					 <input type="submit" name="validate"  class=" btn btn-success buttonadm " value="Add to Cart" />  
+					 <form method="post" action="cart.php?action=validate">  
+						 <input type="submit" name="validate"  class=" btn btn-success buttonadm " value="validate" />  
+					</form>
 				</div>
 		</div>
 		<br />

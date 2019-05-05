@@ -41,4 +41,31 @@
 			}
 		}
 	}
+	
+	function cartItemEdit()
+	{
+		session_start();
+		foreach($_SESSION["shopping_cart"] as $keys => $values)  
+		{
+			if($values["item_id"] == $_GET["id"])  
+			{
+					unset($_SESSION["shopping_cart"][$keys]);
+			}
+		}
+	}
+
+	function cartItemValidate()
+	{
+		$file = "./orders.json";
+		echo "asdadsad";
+		if (!empty($_SESSION["shopping_cart"]))
+		{	if (file_exists($file))
+				$data = json_decode(file_get_contents($file), TRUE);
+	
+			$data[$_SESSION["auth_login"]] = $_SESSION["auth_login"];
+			$data[$_SESSION["auth_login"]] =  $_SESSION["shopping_cart"];
+			$data = json_encode($data, JSON_PRETTY_PRINT);
+			file_put_contents($file, $data);
+		}
+	}
 ?>

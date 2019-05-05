@@ -72,7 +72,8 @@
 			"categories"=>array($_POST["categories1"], $_POST["categories2"]),
 			"url" => $_POST["url"],
 			"img" => $_POST["img"],
-			 "number"=>$_POST["number"]];
+			"number"=>$_POST["number"],
+			"id"=>$item];
 		dataBaseItemEditKey($new_data, $item);
 	}
 	function addItem($item)
@@ -85,6 +86,7 @@
 			"url" => $_POST["url"],
 			"img" => $_POST["img"],
 			 "number"=>$_POST["number"]];
+		print_r($new_data);
 		dataBaseItemAdd($new_data);
 	}
 	function delItem($item)

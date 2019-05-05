@@ -14,11 +14,11 @@
 					{
 
 						$_SESSION = getSession($_POST);
-						// $_SESSION["auth_login"] = $_POST["login"];
-						// $_SESSION["auth_address"] = $log["address"];
-						// $_SESSION["auth_email"] = $log["email"];
-						// $_SESSION["auth_phone"] = $log["phone"];
-						// $_SESSION["auth_status"] = $log["status"];
+						$_SESSION["auth_login"] = $_POST["login"];
+						$_SESSION["auth_address"] = $log["address"];
+						$_SESSION["auth_email"] = $log["email"];
+						$_SESSION["auth_phone"] = $log["phone"];
+						$_SESSION["auth_status"] = $log["status"];
 						//print_r($_SESSION);
 						$_SESSION["category"] = "all";
 						header('Location: ./index.php');
