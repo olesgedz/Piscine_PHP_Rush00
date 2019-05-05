@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 
 	include("database.php");
@@ -18,4 +17,3 @@
 	$array = dataBaseGetCategory("tech");
 	dataBaseCreatePageFromArray($array);
 	//echo "<img src='https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xr/iphone-xr-blue-select-201809?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1551226036356'>";
-	

@@ -1,8 +1,13 @@
 <?php
 	session_start();
 
-	if ($_POST["submit"] === "Change" && ($_POST["phone"] && $_POST["passwd"]))
+	if ($_POST["submit"] === "Delete" && $_POST["passwd"])
 	{
+		if ($_SESSION["auth_login"] == "admin")
+		{
+			header('Location: profile.php');
+			exit();
+		}
 		$lp = unserialize(file_get_contents("./private/passwd"));
 		foreach($lp as $log)
 		{
@@ -10,11 +15,10 @@
 			{
 				if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 				{
-					$log[$_SESSION["login"]] = array ("phone" => $_POST["phone"]);
+					unset($lp[$_SESSION["auth_login"]]);
 					file_put_contents("./private/passwd", serialize($lp));
-					$_SESSION["auth_phone"] = $_POST["phone"];
-					header('Location: ./profile.php');
-					exit();
+					session_destroy();
+					header('Location: index.php');
 				}
 			}
 		}
@@ -25,7 +29,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck - Change phone</title>
+	<title>Brainfuck - Delete user</title>
 	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<style>
 		* {
@@ -89,6 +93,11 @@
 		a {
 			text-decoration: none;
 		}
+		.button_del{
+			background-color: red;
+			border: none;
+			color: black;
+		}
 	</style>
 </head>
 <body>
@@ -118,10 +127,9 @@
 			?>
 		</div>
 	</div>
-	<form action="change_number.php" method='post'>
-		<input name="phone" type="tel" value="" placeholder="New phone number" required>
+	<form action="delete_user.php" method='post'>
 		<input name="passwd" type="password" value="" placeholder="Password" required>
-		<input class="button" type="submit" name="submit" value="Change"/>
+		<input class="button_del" type="submit" name="submit" value="Delete"/>
 	</form>
 </body>
 </html>

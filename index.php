@@ -13,7 +13,7 @@
 <body>
 	<div class="header">
 		<div class="choose">
-			<div class="brainfuck">Brainfuck</div>
+		<div class="brainfuck"><a href="index.php">Brainfuck</a></div>
 		</div>
 
 		<div class="buttons">

@@ -12,7 +12,7 @@
 <body>
 	<div class="header">
 		<div class="choose">
-			<div class="brainfuck">Brainfuck</div>
+			<div class="brainfuck"><a href="index.php">Brainfuck</a></div>
 		</div>
 
 		<div class="buttons">
@@ -41,11 +41,54 @@
 			<?php
 			if ($_SESSION["auth_login"] == "admin")
 			{
-			?>
-			<div class="userlist">
-
+				?>
+			<div class="userprofile usern">Username: <?=$_SESSION["auth_login"]?></div>
+			<div class="userprofile st_admin"><?=$_SESSION["auth_status"]?></div>
+			<table class="table">
+				<tr>
+					<td >
+						<div class="userprofile">E-mail: <?=$_SESSION["auth_email"]?></div>
+					</td>
+					<td>
+						<form action="change_email.php">
+							<input class="buttonchange" type="submit" value="Change email" />
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="userprofile">Phone number: <?=$_SESSION["auth_phone"]?></div>
+					</td>
+					<td>
+						<form action="change_number.php">
+							<input class="buttonchange" type="submit" value="Change phone number" />
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="userprofile">Address: <?=$_SESSION["auth_address"]?></div>
+					</td>
+					<td>
+						<form action="change_address.php">
+							<input class="buttonchange" type="submit" value="Change address" />
+						</form>
+					</td>
+				</tr>
+				</table>
+				<div class="userprofile">
+					<form action="change_passwd.php">
+						<input class="buttonchange" type="submit" value="Change password" />
+					</form>
+				</div>
+				<div class="userprofile">
+					<form action="delete_user.php">
+						<input class="buttondelete" type="submit" value="Delete account" />
+					</form>
+				</div>
 			</div>
-			<?php
+
+				<?php
 			}
 			else
 			{
@@ -86,6 +129,11 @@
 				<div class="userprofile">
 					<form action="change_passwd.php">
 						<input class="buttonchange" type="submit" value="Change password" />
+					</form>
+				</div>
+				<div class="userprofile">
+					<form action="delete_user.php">
+						<input class="buttondelete" type="submit" value="Delete account" />
 					</form>
 				</div>
 			</div>
