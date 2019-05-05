@@ -20,19 +20,7 @@
         "auth_email": "adawd@dsadasd",
         "auth_phone": "e213123",
         "auth_status": "user",
-        "shopping_cart": [
-            {
-                "item_id": "puppy",
-                "item_name": "puppy",
-                "item_price": "1000",
-                "item_quantity": 2
-            },
-            {
-                "item_id": "iphone",
-                "item_name": "iphone",
-                "item_price": "999",
-                "item_quantity": 2
-            }
-        ]
+        "shopping_cart": [],
+        "category": "all"
     }
 }

@@ -171,7 +171,22 @@ a {
 	cursor: pointer;
 	width: 120px;
 }
+.menu
+{
+	width: 120px;
+	font-size: 16px;
+	background-color: #666;
+}
 
+.align
+{
+	align-content: center;
+	text-align: center;
+}
+.red
+{
+	background-color: red;
+}
 .hitem{
 	font-weight: bold;
 	font-size: 25px;
