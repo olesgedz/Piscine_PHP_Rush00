@@ -3,8 +3,6 @@
 
 	if ($_POST["submit"] == "Register" && ($_POST["login"] || $_POST["passwd"]))
 	{
-		if (!file_exists("./private"))
-			mkdir("./private");
 		if (file_exists("./private/passwd"))
 		{
 			$lp = unserialize(file_get_contents("./private/passwd"));
@@ -17,11 +15,22 @@
 				}
 			}
 		}
-		$lp[] = array (
+		$lp[$_POST["login"]] = array (
 			"login" => $_POST["login"],
-			"passwd" => hash('whirlpool', $_POST["passwd"]));
+			"passwd" => hash('whirlpool', $_POST["passwd"]),
+			"address" => $_POST["address"],
+			"email" => $_POST["email"],
+			"phone" => $_POST["phone"],
+			"status" => "user",
+		);
 		file_put_contents("./private/passwd", serialize($lp));
-		header('Location: ./login.php');
+		$_SESSION["auth_login"] = $_POST["login"];
+		$_SESSION["auth_address"] = $_POST["address"];
+		$_SESSION["auth_email"] = $_POST["email"];
+		$_SESSION["auth_phone"] = $_POST["phone"];
+		$_SESSION["auth_status"] = "user";
+		header('Location: ./index.php');
+		exit();
 	}
 ?>
 

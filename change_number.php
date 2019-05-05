@@ -4,15 +4,16 @@
 	if ($_POST["submit"] === "Change" && ($_POST["phone"] && $_POST["passwd"]))
 	{
 		$lp = unserialize(file_get_contents("./private/passwd"));
-		foreach($lp as $log)
+		foreach($lp as &$log)
 		{
 			if ($log["login"] == $_SESSION["auth_login"])
 			{
 				if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 				{
-					$log[$_SESSION["login"]] = array ("phone" => $_POST["phone"]);
+					$log["phone"] = $_POST["phone"];
 					file_put_contents("./private/passwd", serialize($lp));
 					$_SESSION["auth_phone"] = $_POST["phone"];
+					unset($log);
 					header('Location: ./profile.php');
 					exit();
 				}

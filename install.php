@@ -1,5 +1,6 @@
 <?php
 	session_start();
+
 	if (!file_exists("./private"))
 		mkdir("./private");
 	if (!file_exists("./private/passwd"))

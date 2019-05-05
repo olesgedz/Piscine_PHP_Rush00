@@ -3,8 +3,6 @@
 
 	if ($_POST["submit"] == "Login" && ($_POST["login"] && $_POST["passwd"]))
 	{
-		if (!file_exists("./private"))
-			mkdir("./private");
 		if (file_exists("./private/passwd"))
 		{
 			$lp = unserialize(file_get_contents("./private/passwd"));

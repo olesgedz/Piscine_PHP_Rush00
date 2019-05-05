@@ -1,11 +1,69 @@
 <?php
 	session_start();
+
+	if ($_POST["submit"] == "DeleteUser")
+		delUser($_POST["user"]);
+	else if ($_POST["submit"] == "MakeAdmin")
+		makeAdmin($_POST["user"]);
+	else if ($_POST["submit"] == "MakeUser")
+		makeUser($_POST["user"]);
+
+	function delUser($user)
+	{
+		$lp = unserialize(file_get_contents("./private/passwd"));
+		foreach($lp as &$log)
+		{
+			// print_r($lp);
+
+			if ($log["login"] == $user)
+			{
+				unset($lp[$user]);
+				file_put_contents("./private/passwd", serialize($lp));
+				header('Location: ./profile.php');
+			}
+		}
+	}
+	function makeAdmin($user)
+	{
+		$lp = unserialize(file_get_contents("./private/passwd"));
+		foreach($lp as &$log)
+		{
+			// print_r($lp);
+
+			if ($log["login"] == $user)
+			{
+				$log["status"] = "admin";
+				file_put_contents("./private/passwd", serialize($lp));
+				$_SESSION["auth_status"] = "admin";
+				unset($log);
+				header('Location: ./profile.php');
+				exit();
+			}
+		}
+	}
+	function makeUser($user)
+	{
+		$lp = unserialize(file_get_contents("./private/passwd"));
+		foreach($lp as &$log)
+		{
+			if ($log["login"] == $user)
+			{
+				$log["status"] = "user";
+				file_put_contents("./private/passwd", serialize($lp));
+				$_SESSION["auth_status"] = "admin";
+				unset($log);
+				header('Location: ./profile.php');
+				exit();
+			}
+		}
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck</title>
+	<title>Brainfuck - Profile</title>
 	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
@@ -39,7 +97,7 @@
 	<div class="home">
 		<div class="centre_profile">
 			<?php
-			if ($_SESSION["auth_login"] == "admin")
+			if ($_SESSION["auth_status"] == "admin")
 			{
 				?>
 			<div class="userprofile usern">Username: <?=$_SESSION["auth_login"]?></div>
@@ -85,6 +143,38 @@
 					<form action="delete_user.php">
 						<input class="buttondelete" type="submit" value="Delete account" />
 					</form>
+				</div>
+				<hr>
+				<div class="userprofile st_admin">Users edit</div>
+				<hr>
+				<div class="admusers">
+					<?php
+						$lp = unserialize(file_get_contents("./private/passwd"));
+						foreach($lp as $log)
+						{
+							if ($log["login"] !== $_SESSION["auth_login"] && $log["login"] !== "admin"){
+					?>
+						<div class="users">
+							<div>Username: <?=$log["login"]?></div>
+							<div>E-mail: <?=$log["email"]?></div>
+							<div>Phone: <?=$log["phone"]?></div>
+							<div>Address: <?=$log["address"]?></div>
+							<div>Status: <?=$log["status"]?></div>
+
+							<form action="profile.php" method="post">
+								<input type="hidden" name="user" value="<?=$log["login"]?>"/>
+								<input class="buttonadm" name="submit" type="submit" value="DeleteUser" />
+								<input class="buttonadm" name="submit" type="submit" value="MakeAdmin" />
+								<input class="buttonadm" name="submit" type="submit" value="MakeUser" />
+							</form>
+
+							<hr>
+						</div>
+
+					<?php
+						}
+					}
+						?>
 				</div>
 			</div>
 

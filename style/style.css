@@ -57,12 +57,12 @@
 	height: auto;
 	margin: 5px;
 	justify-content: space-between;
-	border: 1px solid #e1e1e1;;
-
+	border: 1px solid #e1e1e1;
+	font-family: Proxima Nova,Tahoma,Serif,Arial;
 }
 .top img{
-	width: 100%;
-	height: 100%;
+	width: 250px;
+	height: 250px;
 }
 * {
 	padding: 0;
@@ -141,4 +141,25 @@ a {
 	margin: 4px 2px;
 	cursor: pointer;
 	width: 250px;
+}
+.users{
+	display: flex;
+	flex-direction: column;
+}
+.admusers{
+	display: flex;
+	flex-direction: column;
+}
+.buttonadm{
+	background-color: rgba(131, 124, 124, 0.678);
+	border: none;
+	color: rgb(2, 2, 2);
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	width: 120px;
 }
