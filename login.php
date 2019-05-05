@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	include("lib.php");
 	if ($_POST["submit"] == "Login" && ($_POST["login"] && $_POST["passwd"]))
 	{
 		if (file_exists("./private/passwd"))
@@ -12,11 +12,14 @@
 				{
 					if ($log['passwd'] === hash('whirlpool', $_POST["passwd"]))
 					{
-						$_SESSION["auth_login"] = $_POST["login"];
-						$_SESSION["auth_address"] = $log["address"];
-						$_SESSION["auth_email"] = $log["email"];
-						$_SESSION["auth_phone"] = $log["phone"];
-						$_SESSION["auth_status"] = $log["status"];
+
+						$_SESSION = getSession($_POST);
+						// $_SESSION["auth_login"] = $_POST["login"];
+						// $_SESSION["auth_address"] = $log["address"];
+						// $_SESSION["auth_email"] = $log["email"];
+						// $_SESSION["auth_phone"] = $log["phone"];
+						// $_SESSION["auth_status"] = $log["status"];
+						//print_r($_SESSION);
 						header('Location: ./index.php');
 						exit();
 					}

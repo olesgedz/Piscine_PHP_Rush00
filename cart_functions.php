@@ -6,13 +6,16 @@
 		$flag = 0;
 		$i = 0;
 		$count = count($_SESSION["shopping_cart"]);
-		foreach ($_SESSION["shopping_cart"] as &$item)
+		if (!empty($_SESSION["shopping_cart"]))
 		{
-			if ($item["item_id"] == $_GET["id"])
+			foreach ($_SESSION["shopping_cart"] as &$item)
 			{
-				$item['item_quantity'] += $_POST["quantity"];
-				$flag = 1;
-				unset($item);
+				if ($item["item_id"] == $_GET["id"])
+				{
+					$item['item_quantity'] += $_POST["quantity"];
+					$flag = 1;
+					unset($item);
+				}
 			}
 		}
 		if ($flag == 0)

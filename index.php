@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include("install.php");
-	print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +40,6 @@
 	</div>
 	<div class="home">
 		<div class="centre">
-<<<<<<< HEAD
-			<table>
-=======
 		<div id="buttonstring">
 			<button class="btn active" onclick="filterSelect('all')"> Show all</button>
 			<button class="btn" onclick="filterSelect('computers')"> Computers</button>
@@ -53,7 +49,6 @@
 		</div>
 
 		<div class="container">
->>>>>>> 484a791f6d7570981cbea0d376a52ed11a8d7f1b
 			<?php
 				include("database.php");
 				$array = dataBaseGetCategory("tech");
@@ -83,9 +78,6 @@
 				$i++;
 			}
 			?>
-<<<<<<< HEAD
-			</table>
-=======
 			<div class="itemsFilter computers">
 				<?php
 					include("main.php");
@@ -142,7 +134,6 @@
 			});
 		}
 		</script>
->>>>>>> 484a791f6d7570981cbea0d376a52ed11a8d7f1b
 		</div>
 	</div>
 </body>
