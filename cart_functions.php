@@ -94,7 +94,11 @@
 			 {
 				 foreach($user["cart"] as $b=>$item)
 				 {
-					unset($data[$key]["cart"][$b]);
+					 if($item["item_id"] == $item_name)
+					 {
+					 	unset($data[$key]["cart"][$b]);
+					 }
+					
 				 }
 
 			}
