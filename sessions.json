@@ -42,31 +42,19 @@
         "auth_email": "kratyuk@mail.ru",
         "auth_phone": "8-925-111-86-76",
         "auth_status": "admin",
-        "category": "tech",
-        "shopping_cart": {
-            "1": {
-                "item_id": "Sony PS 4",
-                "item_name": "Sony PS 4",
-                "item_price": "999",
-                "item_quantity": 2
+        "category": "all",
+        "shopping_cart": [
+            {
+                "item_id": "toy1",
+                "item_name": "toy1",
+                "item_price": "234",
+                "item_quantity": "2"
             },
-            "2": {
-                "item_id": "Xbox One S",
-                "item_name": "Xbox One S",
-                "item_price": "299",
-                "item_quantity": 2
-            },
-            "3": {
-                "item_id": "Sony DSCW800",
-                "item_name": "Sony DSCW800",
-                "item_price": "199",
-                "item_quantity": 2
-            },
-            "4": {
-                "item_id": "Canon PowerShot",
-                "item_name": "Canon PowerShot",
-                "item_price": "100",
-                "item_quantity": 2
+            {
+                "item_id": "sdd312321sadsads",
+                "item_name": "sdd312321sadsads",
+                "item_price": "99",
+                "item_quantity": "1"
             }
         }
     }

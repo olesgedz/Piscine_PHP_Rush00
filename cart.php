@@ -24,11 +24,42 @@
  ?>
  <!DOCTYPE html>
  <html>  
-	  <head>  
-		   <title> Shopping Cart </title>  
+	  <head> 
+	  		<meta charset="UTF-8">
+		   <title> Shopping Cart </title> 
+		   <link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
+			<link rel="stylesheet" type="text/css" href="style/style.css">
 	  </head>  
 	  <body>  
-		   <br />  
+	  <div class="header">
+		<div class="choose">
+		<div class="brainfuck"><a href="index.php">Brainfuck</a></div>
+		</div>
+
+		<div class="buttons">
+			<div class="shoppingcart cla"><a href = "cart.php"> <img src="https://image.flaticon.com/icons/svg/126/126515.svg"></a></div>
+			<?php
+				if ($_SESSION["auth_login"])
+				{
+			?>
+					<div class="accountsettings cla"><a href="profile.php" title="Profile"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"></a></div>
+					<div class="cla"><?=$_SESSION["auth_login"]?></div>
+					<div class="cla"><a href="logout.php" title="Logout"><img src="https://image.flaticon.com/icons/svg/126/126467.svg"></a></div>
+			<?php
+				}
+				else
+				{
+			?>
+					<div class="accountsettings cla"><a href="login.php"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"></a></div>
+					<div class="cla"><a href="login.php">Login</a></div>
+			<?php
+				}
+			?>
+		</div>
+			</div>
+		<div>
+		   <br />
+		   <div>
 		   <div class="container" style="width:700px;">  
 				<h3 align="center"> Shopping Cart </h3><br />
 				<?php
@@ -101,6 +132,7 @@
 					</form>
 				</div>
 		</div>
+						</div>
 		<br />
 	</body>
  </html>
