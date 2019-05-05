@@ -39,9 +39,37 @@
 	</div>
 	<div class="home">
 		<div class="centre">
+			<table>
 			<?php
-				include("main.php");
+				include("database.php");
+				$array = dataBaseGetCategory("tech");
+				$i = 0;
+				foreach($array as $item)
+				{
+					if (i % 3 != 1)
+					{
+						echo "<td>";
+					}
+					$name = $item["name"];
+					$img = $item["img"];
 			?>
+				<td>
+					<p>
+						<h1>$name</h1>
+					</p>
+					<div class="top">
+						<img  src=$img/>
+					</div>
+				</td>;
+			<?php
+				if (i % 3 != 1)
+				{
+					echo "</td>";
+				}
+				$i++;
+			}
+			?>
+			</table>
 		</div>
 	</div>
 </body>
