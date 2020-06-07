@@ -38,5 +38,30 @@
                 "item_quantity": "1"
             }
         ]
+    },
+    "": {
+        "login": "sdsd",
+        "passwd": "sdsdsdsdsd",
+        "category": "all",
+        "shopping_cart": [
+            {
+                "item_id": "Sony PS 4",
+                "item_name": "Sony PS 4",
+                "item_price": "999",
+                "item_quantity": 5
+            },
+            {
+                "item_id": "Canon PowerShot",
+                "item_name": "Canon PowerShot",
+                "item_price": "100",
+                "item_quantity": 30
+            },
+            {
+                "item_id": "Xbox One S",
+                "item_name": "Xbox One S",
+                "item_price": "299",
+                "item_quantity": 27
+            }
+        ]
     }
 }

@@ -35,18 +35,18 @@
 	}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Brainfuck</title>
-	<link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
+	<title>Sushilka</title>
+	<link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/822/822699.svg" />
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 </head>
 <body>
 	<div class="header">
 		<div class="choose">
-		<div class="brainfuck"><a href="index.php">Brainfuck</a></div>
+		<div class="brainfuck"><a href="index.php">Сушилка</a></div>
 		</div>
 
 		<div class="buttons">
@@ -117,7 +117,7 @@
 	</div>
 </body>
 <footer>
-	<div><span>© jblack-b & ntothmur</span></div>
+	<div><span>© jmalik & mmanhack</span></div>
 	<div><span>Piscine PHP - Rush00 21School</span></div>
 </footer>
 </html>
