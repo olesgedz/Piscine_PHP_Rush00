@@ -33,5 +33,16 @@
                 "item_quantity": "1"
             }
         }
+    },
+    "": {
+        "name": null,
+        "cart": {
+            "Sony PS 4": {
+                "item_id": "Sony PS 4",
+                "item_name": "Sony PS 4",
+                "item_price": "999",
+                "item_quantity": 5
+            }
+        }
     }
 }

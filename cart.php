@@ -1,5 +1,5 @@
 <?php
-	session_start(); //already started?  yes, but it resumes it
+	session_start(); 
 	header('Cache-Control: no cache');
 	include("database.php");
 	include("cart_functions.php");
@@ -27,12 +27,11 @@
 	  <head>
 	  		<meta charset="UTF-8">
 		   <title> Shopping Cart </title>
-		   <link rel="shortcut icon" href="https://www.flaticon.com/premium-icon/icons/svg/287/287371.svg" />
+		   <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/822/822699.svg" />
 			<link rel="stylesheet" type="text/css" href="style/style.css">
 	  </head>
 	  <body>
-	  <div class="header">
-		<div class="choose">
+	  <div class="header">		<div class="choose">
 		<div class="brainfuck"><a href="index.php">Brainfuck</a></div>
 		</div>
 
